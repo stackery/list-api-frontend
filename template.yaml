@@ -97,6 +97,33 @@ Resources:
       StreamSpecification:
         StreamViewType: NEW_AND_OLD_IMAGES
       TableName: !Sub ${AWS::StackName}-ItemTable
+  populateFrontend:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub ${AWS::StackName}-populateFrontend
+      Description: !Sub
+        - Stack ${StackTagName} Environment ${EnvironmentTagName} Function ${ResourceName}
+        - ResourceName: populateFrontend
+      CodeUri: src/populateFrontend
+      Handler: index.handler
+      Runtime: nodejs10.x
+      MemorySize: 3008
+      Timeout: 30
+      Tracing: Active
+      Policies:
+        - AWSXrayWriteOnlyAccess
+      Events:
+        FrontEnd:
+          Type: S3
+          Properties:
+            Bucket: !Ref FrontEnd
+            Events:
+              - s3:ObjectCreated:*
+              - s3:ObjectRemoved:*
+  FrontEnd:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub ${AWS::StackName}-frontend-${AWS::AccountId}
 Parameters:
   StackTagName:
     Type: String
