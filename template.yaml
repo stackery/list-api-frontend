@@ -124,6 +124,11 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: !Sub ${AWS::StackName}-frontend-${AWS::AccountId}
+  populateFrontendDeployTrigger:
+    Type: Custom::FunctionDeployTrigger
+    Properties:
+      ServiceToken: !GetAtt populateFrontend.Arn
+      DeploymentTimestamp: !Ref DeploymentTimestamp
 Parameters:
   StackTagName:
     Type: String
@@ -134,3 +139,6 @@ Parameters:
   EnvironmentAPIGatewayStageName:
     Type: String
     Description: Environment name used for API Gateway Stage names (injected by Stackery at deployment time)
+  DeploymentTimestamp:
+    Type: Number
+    Description: Deployment preparation timestamp in milliseconds Since Epoch (injected by Stackery at deployment time)
