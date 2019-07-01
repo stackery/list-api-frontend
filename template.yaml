@@ -112,14 +112,6 @@ Resources:
       Tracing: Active
       Policies:
         - AWSXrayWriteOnlyAccess
-      Events:
-        FrontEnd:
-          Type: S3
-          Properties:
-            Bucket: !Ref FrontEnd
-            Events:
-              - s3:ObjectCreated:*
-              - s3:ObjectRemoved:*
   FrontEnd:
     Type: AWS::S3::Bucket
     Properties:
