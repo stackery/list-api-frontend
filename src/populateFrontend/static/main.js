@@ -6,16 +6,16 @@ const time = new Date();
 document.getElementById("submit").onclick = function(e){
   e.preventDefault();
   const inputData = {
-    "item":$('#itemInput').val(),
-    "timestamp": time.toLocaleString()
+    item: $('#itemInput').val(),
+    timestamp: time.toLocaleString()
     };
-    console.log(inputData);
+    console.log(JSON.stringify(inputData));
   $.ajax({
         url: `${API_ENDPOINT}/post`,
         type: 'POST',
         data:  JSON.stringify(inputData),
         crossDomain: true,
-        dataType: 'jsonp',
+        dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         success: function (response) {
           document.getElementById("itemAdded").innerHTML = "Item Added!";
