@@ -4,10 +4,12 @@ const time = new Date();
 
 //AJAX POST
 document.getElementById("submit").onclick = function(){
+  console.log(inputData)
   const inputData = {
     "item":$('#itemInput').val(),
     "timestamp": time.toLocaleString()
     };
+    console.log(inputData);
   $.ajax({
         url: `${API_ENDPOINT}/submit`,
         type: 'POST',
@@ -15,6 +17,7 @@ document.getElementById("submit").onclick = function(){
         contentType: 'application/json; charset=utf-8',
         success: function (response) {
           document.getElementById("itemAdded").innerHTML = "Item Added!";
+          console.log(response);
         },
         error: function () {
             alert("Something went wrong");
