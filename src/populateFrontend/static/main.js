@@ -6,8 +6,8 @@ const time = new Date();
 document.getElementById("submit").onclick = function(e){
   e.preventDefault();
   const inputData = {
-    item: $('#itemInput').val(),
-    timestamp: time.toLocaleString()
+    "item": $('#itemInput').val(),
+    "timestamp": time.toLocaleString()
     };
     console.log(JSON.stringify(inputData));
   $.ajax({
@@ -51,3 +51,4 @@ document.getElementById("getItems").onclick = function(e){
         }
     });
 }
+
