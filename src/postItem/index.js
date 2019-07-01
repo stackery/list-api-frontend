@@ -1,12 +1,15 @@
 const AWS = require('aws-sdk');
+const uuid = require('node-uuid');
 
-exports.handler = async () => {
+exports.handler = async event => { 
   const dynamodb = new AWS.DynamoDB.DocumentClient();
+  console.log(event);
   const params = {
     TableName: process.env.TABLE_NAME, // get the table name from the automatically populated environment variables
     Item: {
-      id: '1', // modify with each invoke so the id does not repeat
-      content: 'This is my content' // modify content here
+      id: uuid.v1(),
+      content: event.item,
+      timestamp: event.timestamp // modify content here
     },
     ConditionExpression: 'attribute_not_exists(id)', // do not overwrite existing entries
     ReturnConsumedCapacity: 'TOTAL'
