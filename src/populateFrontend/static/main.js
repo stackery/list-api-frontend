@@ -5,7 +5,6 @@ const time = new Date();
 //AJAX POST
 document.getElementById("submit").onclick = function(e){
   e.preventDefault();
-  console.log(inputData)
   const inputData = {
     "item":$('#itemInput').val(),
     "timestamp": time.toLocaleString()
