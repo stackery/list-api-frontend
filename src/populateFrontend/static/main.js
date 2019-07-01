@@ -3,7 +3,8 @@ const API_ENDPOINT = "https://2hbr6ivoi7.execute-api.us-west-2.amazonaws.com/dem
 const time = new Date();
 
 //AJAX POST
-document.getElementById("submit").onclick = function(){
+document.getElementById("submit").onclick = function(e){
+  e.preventDefault();
   console.log(inputData)
   const inputData = {
     "item":$('#itemInput').val(),
@@ -26,7 +27,8 @@ document.getElementById("submit").onclick = function(){
 }
 
 //AJAX GET REQUEST
-document.getElementById("getItems").onclick = function(){  
+document.getElementById("getItems").onclick = function(e){
+  e.preventDefault();
   $.ajax({
         url: `${API_ENDPOINT}/items`,
         type: 'GET',
