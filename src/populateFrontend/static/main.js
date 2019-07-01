@@ -14,6 +14,8 @@ document.getElementById("submit").onclick = function(e){
         url: API_ENDPOINT,
         type: 'POST',
         data:  JSON.stringify(inputData),
+        crossDomain: true,
+        dataType: 'jsonp',
         contentType: 'application/json; charset=utf-8',
         success: function (response) {
           document.getElementById("itemAdded").innerHTML = "Item Added!";
