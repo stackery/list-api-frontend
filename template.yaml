@@ -112,6 +112,12 @@ Resources:
       Tracing: Active
       Policies:
         - AWSXrayWriteOnlyAccess
+        - S3CrudPolicy:
+            BucketName: !Ref FrontEnd
+      Environment:
+        Variables:
+          BUCKET_NAME: !Ref FrontEnd
+          BUCKET_ARN: !GetAtt FrontEnd.Arn
   FrontEnd:
     Type: AWS::S3::Bucket
     Properties:
