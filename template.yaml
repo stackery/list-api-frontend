@@ -12,13 +12,14 @@ Resources:
         swagger: '2.0'
         info: {}
         paths:
-          /:
+          /post:
             post:
               x-amazon-apigateway-integration:
                 httpMethod: POST
                 type: aws_proxy
                 uri: !Sub arn:${AWS::Partition}:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${postItem.Arn}/invocations
               responses: {}
+          /get:
             get:
               x-amazon-apigateway-integration:
                 httpMethod: POST
@@ -52,10 +53,10 @@ Resources:
           TABLE_NAME: !Ref ItemTable
           TABLE_ARN: !GetAtt ItemTable.Arn
       Events:
-        ItemApiPOST:
+        ItemApiPOSTpost:
           Type: Api
           Properties:
-            Path: /
+            Path: /post
             Method: POST
             RestApiId: !Ref ItemApi
   getItems:
@@ -80,10 +81,10 @@ Resources:
           TABLE_NAME: !Ref ItemTable
           TABLE_ARN: !GetAtt ItemTable.Arn
       Events:
-        ItemApiGET:
+        ItemApiGETget:
           Type: Api
           Properties:
-            Path: /
+            Path: /get
             Method: GET
             RestApiId: !Ref ItemApi
   ItemTable:
