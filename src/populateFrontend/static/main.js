@@ -22,7 +22,7 @@ document.getElementById("submit").onclick = function(e){
           console.log(response);
         },
         error: function (err) {
-            alert(`Something went wrong: ${err}`);
+            alert(`Something went wrong: ${err.message}`);
         }
     });
 }
