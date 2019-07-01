@@ -112,18 +112,18 @@ Resources:
       Tracing: Active
       Policies:
         - AWSXrayWriteOnlyAccess
-      Events:
-        FrontEnd:
-          Type: S3
-          Properties:
-            Bucket: !Ref FrontEnd
-            Events:
-              - s3:ObjectCreated:*
-              - s3:ObjectRemoved:*
+        - S3CrudPolicy:
+            BucketName: !Ref FrontEnd
+      Environment:
+        Variables:
+          BUCKET_NAME: !Ref FrontEnd
+          BUCKET_ARN: !GetAtt FrontEnd.Arn
   FrontEnd:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: !Sub ${AWS::StackName}-frontend-${AWS::AccountId}
+      WebsiteConfiguration:
+        IndexDocument: index.html
   populateFrontendDeployTrigger:
     Type: Custom::FunctionDeployTrigger
     Properties:
