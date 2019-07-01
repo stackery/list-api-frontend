@@ -21,8 +21,8 @@ document.getElementById("submit").onclick = function(e){
           document.getElementById("itemAdded").innerHTML = "Item Added!";
           console.log(response);
         },
-        error: function () {
-            alert("Something went wrong");
+        error: function (err) {
+            alert(`Something went wrong: ${err}`);
         }
     });
 }
