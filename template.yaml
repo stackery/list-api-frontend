@@ -126,11 +126,6 @@ Resources:
       BucketName: !Sub ${AWS::StackName}-frontend-${AWS::AccountId}
       WebsiteConfiguration:
         IndexDocument: index.html
-      CorsRules:
-        AllowedHeaders:
-          - '*'
-        AllowedOrigins:
-          - '*'
   populateFrontendDeployTrigger:
     Type: Custom::FunctionDeployTrigger
     Properties:
