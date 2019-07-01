@@ -1,5 +1,5 @@
 // Add your API endpoint
-const API_ENDPOINT = "https://2hbr6ivoi7.execute-api.us-west-2.amazonaws.com/demo";
+const API_ENDPOINT = "https://2hbr6ivoi7.execute-api.us-west-2.amazonaws.com/demo/";
 const time = new Date();
 
 //AJAX POST
@@ -10,9 +10,8 @@ document.getElementById("submit").onclick = function(e){
     "timestamp": time.toLocaleString()
     };
     console.log(inputData);
-    console.log(e);
   $.ajax({
-        url: `${API_ENDPOINT}/submit`,
+        url: API_ENDPOINT,
         type: 'POST',
         data:  JSON.stringify(inputData),
         contentType: 'application/json; charset=utf-8',
@@ -30,7 +29,7 @@ document.getElementById("submit").onclick = function(e){
 document.getElementById("getItems").onclick = function(e){
   e.preventDefault();
   $.ajax({
-        url: `${API_ENDPOINT}/items`,
+        url: API_ENDPOINT,
         type: 'GET',
          contentType: 'application/json; charset=utf-8',
         success: function (response) {
