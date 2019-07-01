@@ -15,7 +15,7 @@ document.getElementById("submit").onclick = function(e){
         type: 'POST',
         data:  JSON.stringify(inputData),
         crossDomain: true,
-        dataType: 'json',
+        dataType: 'jsonp',
         contentType: 'application/json; charset=utf-8',
         success: function (response) {
           document.getElementById("itemAdded").innerHTML = "Item Added!";
@@ -32,6 +32,8 @@ document.getElementById("getItems").onclick = function(e){
   e.preventDefault();
   $.ajax({
         url: `${API_ENDPOINT}/get`,
+        crossDomain: true,
+        dataType: 'jsonp',
         type: 'GET',
          contentType: 'application/json; charset=utf-8',
         success: function (response) {
