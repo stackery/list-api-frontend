@@ -10,6 +10,7 @@ document.getElementById("submit").onclick = function(e){
     "timestamp": time.toLocaleString()
     };
     console.log(inputData);
+    console.log(e);
   $.ajax({
         url: `${API_ENDPOINT}/submit`,
         type: 'POST',
