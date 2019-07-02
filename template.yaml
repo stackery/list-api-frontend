@@ -39,6 +39,7 @@ Resources:
       Cors:
         AllowOrigin: '''*'''
         AllowHeaders: '''*'''
+        AllowMethods: '''OPTIONS,POST,GET'''
   postItem:
     Type: AWS::Serverless::Function
     Properties:
