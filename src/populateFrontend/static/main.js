@@ -17,6 +17,9 @@ document.getElementById("submit").onclick = function(e){
         crossDomain: true,
         dataType: 'jsonp',
         contentType: 'application/json; charset=utf-8',
+        header: {
+          "Access-Control-Allow-Origin": "*"
+        },
         success: function (response) {
           document.getElementById("itemAdded").innerHTML = "Item Added!";
           console.log(response);
