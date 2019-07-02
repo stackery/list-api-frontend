@@ -2,33 +2,40 @@
 const API_ENDPOINT = "https://2hbr6ivoi7.execute-api.us-west-2.amazonaws.com/demo";
 const time = new Date();
 
+$(function() {
+  console.log( "ready!" );
+});
+
 //AJAX POST
-document.getElementById("submit").onclick = function(e){
+$('#submit').click(function(e) {
   e.preventDefault();
+
   const inputData = {
     "item": $('#itemInput').val(),
     "timestamp": time.toLocaleString()
     };
     console.log(JSON.stringify(inputData));
-  $.ajax({
-        url: `${API_ENDPOINT}/post`,
-        type: 'POST',
-        data:  JSON.stringify(inputData),
-        crossDomain: true,
-        dataType: 'jsonp',
-        contentType: 'application/json; charset=utf-8',
-        header: {
-          "Access-Control-Allow-Origin": "*"
-        },
-        success: function (response) {
-          document.getElementById("itemAdded").innerHTML = "Item Added!";
-          console.log(response);
-        },
-        error: function (err) {
-            alert(`Something went wrong: ${JSON.stringify(err)}`);
-        }
+
+  var ajaxRequest = $.ajax({
+      type: "POST",
+      url: `${API_ENDPOINT}/post`,
+      data: JSON.stringify(inputData),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json"
     });
-}
+
+  //When the request successfully finished, execute passed in function
+  ajaxRequest.done(function(response){
+    document.getElementById("itemAdded").innerHTML = "Item Added!";
+    console.log(response);
+  });
+
+  //When the request failed, execute the passed in function
+  ajaxRequest.fail(function(jqXHR, status){
+    alert(`Something went wrong: ${JSON.stringify(status)}`);
+    console.log(jqXHR);
+  });
+});
 
 //AJAX GET REQUEST
 document.getElementById("getItems").onclick = function(e){
