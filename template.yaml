@@ -22,7 +22,7 @@ Resources:
                 default:
                   statusCode: 200
                   responseParameters:
-                    method.response.header.Access-Control-Allow-Origin: "'*'"
+                    method.response.header.Access-Control-Allow-Origin: '''*'''
           /get:
             get:
               x-amazon-apigateway-integration:
@@ -33,12 +33,13 @@ Resources:
                 default:
                   statusCode: 200
                   responseParameters:
-                    method.response.header.Access-Control-Allow-Origin: "'*'"
+                    method.response.header.Access-Control-Allow-Origin: '''*'''
       EndpointConfiguration: REGIONAL
       TracingEnabled: true
       Cors:
         AllowOrigin: '''*'''
         AllowHeaders: '''*'''
+        AllowMethods: '''OPTIONS,POST,GET'''
   postItem:
     Type: AWS::Serverless::Function
     Properties:
