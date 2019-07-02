@@ -1,7 +1,7 @@
 const AWS = require('aws-sdk');
 const uuid = require('node-uuid');
 
-exports.handler = async event => { 
+exports.handler = async event => {
   const dynamodb = new AWS.DynamoDB.DocumentClient();
   console.log(event);
   const params = {
@@ -23,12 +23,13 @@ exports.handler = async event => {
     console.log(`Error writing to table ${process.env.TABLE_NAME}. Make sure this function is running in the same environment as the table.`);
     throw new Error(error); // stop execution if dynamodb is not available
   }
-  
+
   // Return a 200 response if no errors
   const response = {
     statusCode: 200,
     headers: {
-      'Content-Type': 'application/json'
+      "Access-Control-Allow-Origin": "*", // Required for CORS support to work
+      "Access-Control-Allow-Credentials": true // Required for cookies, authorization headers with HTTPS
     },
     body: 'Success!'
   };
