@@ -1,8 +1,10 @@
 {
-  "name": "populateFrontend",
+  "name": "populatefrontend",
   "version": "1.0.0",
+  "devDependencies": {
+    "aws-sdk": "~2"
+  },
   "dependencies": {
-    "aws-sdk": "~2",
     "cfn-custom-resource": "^4.0.13",
     "fs": "0.0.1-security",
     "mime-types": "^2.1.24",

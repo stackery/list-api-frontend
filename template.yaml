@@ -40,7 +40,7 @@ Resources:
         - ResourceName: postItem
       CodeUri: src/postItem
       Handler: index.handler
-      Runtime: nodejs10.x
+      Runtime: nodejs12.x
       MemorySize: 3008
       Timeout: 30
       Tracing: Active
@@ -68,7 +68,7 @@ Resources:
         - ResourceName: getItems
       CodeUri: src/getItems
       Handler: index.handler
-      Runtime: nodejs10.x
+      Runtime: nodejs12.x
       MemorySize: 3008
       Timeout: 30
       Tracing: Active
@@ -109,7 +109,7 @@ Resources:
         - ResourceName: populateFrontend
       CodeUri: src/populateFrontend
       Handler: index.handler
-      Runtime: nodejs10.x
+      Runtime: nodejs12.x
       MemorySize: 3008
       Timeout: 30
       Tracing: Active
