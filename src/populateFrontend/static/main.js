@@ -1,5 +1,5 @@
 // Add your API endpoint
-const API_ENDPOINT = "https://2hbr6ivoi7.execute-api.us-west-2.amazonaws.com/demo";
+const API_ENDPOINT = "https://pvju4kgy30.execute-api.us-west-2.amazonaws.com/codebuild";
 const time = new Date();
 
 $(function() {
@@ -48,7 +48,7 @@ document.getElementById("getItems").onclick = function(e){
          contentType: 'application/json; charset=utf-8',
         success: function (response) {
           $('#itemsTable tr').slice(1).remove();
-          jQuery.each(response, function(i,data) {          
+          jQuery.each(response, function(i,data) {
             $("#itemsTable").append("<tr> \
                 <th scope='row'>" + data['Id'] + "</td> \
                 <td>" + data['item'] + "</td> \
